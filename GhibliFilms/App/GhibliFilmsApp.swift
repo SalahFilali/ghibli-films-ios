@@ -9,9 +9,14 @@ import SwiftUI
 
 @main
 struct GhibliFilmsApp: App {
+    private let container = AppDependencyContainer()
+    
     var body: some Scene {
         WindowGroup {
-            FilmsListView()
+            FilmsListView(viewModel: FilmsListViewModel(
+                fetchFilmsUseCase: container.makeFetchFilmsUseCase()
+                )
+            )
         }
     }
 }
