@@ -45,7 +45,9 @@ struct FilmsListView: View {
         ScrollView {
             LazyVStack(spacing: 16) {
                 ForEach(viewModel.films) { film in
+                    NavigationLink(value: film) {
                         FilmRowView(film: film)
+                    }
                     .buttonStyle(.plain)
                     .accessibilityIdentifier("film_link_\(film.id)")
                 }
@@ -54,7 +56,9 @@ struct FilmsListView: View {
         }
         .scrollIndicators(.hidden)
         .background(Color(.systemGroupedBackground))
-        
+        .navigationDestination(for: Film.self) { film in
+            FilmDetailView(film: film)
+        }
+        .accessibilityIdentifier("films_list_view")
     }
 }
-
