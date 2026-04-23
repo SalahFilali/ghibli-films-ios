@@ -16,7 +16,7 @@ final class APIClient: APIClientProtocol {
         self.decoder = decoder
     }
 
-    func fetch<T: Decodable & Sendable>(_ type: T.Type, from url: URL) async throws -> T {
+    func fetch<T: Decodable>(_ type: T.Type, from url: URL) async throws -> T {
         do {
             let (data, response) = try await session.data(from: url)
 

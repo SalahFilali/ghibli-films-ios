@@ -8,5 +8,5 @@
 import Foundation
 
 protocol APIClientProtocol {
-    func fetch<T: Decodable & Sendable>(_ type: T.Type, from url: URL) async throws -> T
+    func fetch<T: Decodable>(_ type: T.Type, from url: URL) async throws -> T
 }
